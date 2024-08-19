@@ -1,0 +1,190 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+
+  pointer-events: none;
+  /* image-rendering: pixelated; */
+  border-radius: 50%;
+  margin-right: 10px;
+  overflow: hidden;
+}
+
+
+header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: #198754;
+  padding: 5px 30px;
+  justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+
+}
+
+ul {
+  flex-direction: row;
+  display: flex;
+  flex: 1,
+
+}
+
+.list {
+  font-size: 16px;
+  align-items: center;
+  display: flex;
+  margin: 0 6px;
+}
+
+.list>a {
+  display: flex;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+}
+
+.list p {
+  padding: 0 8px !important;
+}
+
+
+/* form */
+.content {
+  width: 95%;
+  margin: auto;
+  /* margin-top: 40px; */
+  padding-top: 80px;
+  margin-bottom: 15px;
+}
+
+.form .form-group {
+  margin-top: 10px;
+}
+
+.container-fluid {
+  padding: 0 !important;
+}
+
+.title {
+  align-items: center;
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+}
+
+.form h4 {
+  text-align: center;
+}
+.fromSection{
+  width: 55%;
+  margin: auto;
+}
+.formText{
+    width:55%;
+    margin: auto;
+    text-align: center;
+    font-size: 11px;
+}
+@media only screen and (max-width: 600px) {
+  .fromSection{
+    width: 80%;
+    margin: auto;
+  }
+  .formText{
+    width:80%;
+    margin: auto;
+    text-align: center;
+}
+}
+@media only screen and (min-width: 600px) {
+  .content {
+    /* width: 500px; */
+    margin: auto;
+    /* margin-top: 40px; */
+    margin-bottom: 30px;
+  }
+
+  header {
+
+    padding: 10px 100px;
+
+  }
+}
+
+.form-label {
+  font-size: .8rem;
+  font-weight: 600;
+}
+
+input::placeholder,
+textarea::placeholder {
+  font-size: .7rem;
+  font-weight: 600;
+  font-family: sans-serif;
+}
+
+.form-control {
+  font-size: .8rem;
+}
+
+.Dropdown-control {
+  border-radius: 5px !important;
+}
+
+.complete_grade_year input[type=number] {
+  text-align: center;
+}
+input[type=radio] {
+ margin: 0 10px;
+}
+.print_Btn{
+  display: flex;
+  /* text-align: center; */
+  /* margin: auto; */
+  /* align-items: center; */
+  justify-content: center;
+}
+.print_btn{
+margin: 0 50px;
+}
+@media print {
+  * {
+    -webkit-print-color-adjust: exact; /* For WebKit browsers like Chrome and Safari */
+    color-adjust: exact; /* For other browsers */
+    padding: 0;margin: 0;
+  }
+  
+  header, /* Assuming your header class is 'header' */
+  footer,title { /* Assuming your footer class is 'footer' */
+    display: none;
+  }
+  .print_btn { /* Assuming your footer class is 'footer' */
+    display: none!important;
+  }
+  .content {
+    margin:0px; /* Adjust margins if needed */
+    padding: 0!important;
+    width: 100%!important;
+  }
+}
+.underline-text {
+  display: inline-block;
+    border-bottom: 1px dashed black; /* You can adjust the color and style */
+    padding-bottom: 2px; /* Adjust spacing as needed */
+    width: 100%; /* Make sure it spans the width of the column */
+    box-sizing: border-box; /* Include padding and border in the element's total width */
+    text-align: left; /* Align text to the left to ensure it's not centered */
+    white-space: normal;
+    word-wrap: break-word;
+    word-break: break-word;
+    
+}
+.print_column{
+  margin: 0 !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
