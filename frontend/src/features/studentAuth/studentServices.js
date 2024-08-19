@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_URL = '/api/students/'
+const API_URL = 'https://al-mackiya.onrender.com/api/students/'
 
 // Create New Student Details
 const addNewRecord = async (stdDetailsData, token) => {
