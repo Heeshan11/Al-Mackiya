@@ -1,7 +1,6 @@
 import Table from 'react-bootstrap/Table';
 import { displayTableTitle, tableTitle } from '../constant/Data';
 import { FaTrashAlt, FaEdit, FaPrint } from "react-icons/fa";
-
 import moment from 'moment';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteStudent, updateStudent } from '../features/studentAuth/studentSlice';
