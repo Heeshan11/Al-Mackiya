@@ -86,7 +86,7 @@ function DisplayTable({ students }) {
                                 <td>{e.std_id_num}</td>
                                 <td>{e.std_name}</td>
                                 <td>{e.std_gender}</td>
-                                <td>{moment(e.std_joining_date).format('YYYY-MM-DD')}</td>
+                                <td>{moment(e.std_dob).format('YYYY-MM-DD')}</td>
 
                                 <td>{moment(e.std_joining_date).format('YYYY-MM-DD')}</td>
                                 <td>{e.std_nationality}</td>
