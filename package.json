@@ -21,8 +21,7 @@
     "install": "^0.13.0",
     "jsonwebtoken": "^9.0.2",
     "moment": "^2.30.1",
-    "mongoose": "^8.5.2",
-    "react-tooltip": "^5.28.0"
+    "mongoose": "^8.5.2"
   },
   "devDependencies": {
     "concurrently": "^8.2.2",
