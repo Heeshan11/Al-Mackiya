@@ -12,7 +12,8 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify'
 import Spinner from './Spinner';
-
+import { IoIosInformationCircleOutline } from "react-icons/io";
+import { Tooltip } from 'react-tooltip';
 function StdForm() {
   const [validated, setValidated] = useState(false);
   const { user, } = useSelector(state => state.auth);
@@ -53,7 +54,7 @@ function StdForm() {
     last_date: '',
     std_action_form_num: '',
     std_sction_form_issue_date: '',
-    other_reason: '',user_name:user!==null?user.name:''
+    other_reason: '', user_name: user !== null ? user.name : ''
 
 
   })
@@ -98,8 +99,8 @@ function StdForm() {
   const [selectedGender, setSelectedGender] = useState('')
   const [selectedTwelfthAl, setSelectedTwelfthAl] = useState('')
   const [thirteenAl, setThirteenAl] = useState('')
-  const nationOption = ['C/M', 'C/T', 'C/C', 'C/S']
-  const parentsReligionOption = ['Islam', 'Hinduism ', 'Catholic', 'Buddhism']
+  const nationOption = ['C/M', 'C/T', 'C/C', "C/CH", 'C/S', 'I/T']
+  const parentsReligionOption = ['Islam', 'Hinduism ', 'Catholic', 'Buddhism', "Christian "]
   const [selectedNationality, setSelectedNationality] = useState('')
   const [selectedParentsReligion, setSelectedParentsReligion] = useState('')
 
@@ -114,7 +115,7 @@ function StdForm() {
   useEffect(() => {
     const today = new Date().toISOString().split('T')[0];
     setMaxDate(today);
-}, []);
+  }, []);
   useEffect(() => {
     setFormData((prevState) => ({
       ...prevState,
@@ -163,16 +164,16 @@ function StdForm() {
       last_date,
       std_action_form_num,
       std_sction_form_issue_date,
-      other_reason,user_name
+      other_reason, user_name
     }
-  
-    
-    dispatch(addNewRecord(formData))  
+
+
+    dispatch(addNewRecord(formData))
   }
-  const { isSuccess,isError, message, isLoading } = useSelector((state) => state.student)
+  const { isSuccess, isError, message, isLoading } = useSelector((state) => state.student)
   useEffect(() => {
     if (isSuccess) {
-   
+
       toast.success("Record add successfully!")
       setFormData({
         std_index_num: "",
@@ -216,8 +217,8 @@ function StdForm() {
       dispatch(resetStates())
       toast.error(message)
     }
-    
-  }, [isSuccess, message,isError,dispatch])
+
+  }, [isSuccess, message, isError, dispatch])
 
   const handleGenderChange = (value) => {
     setSelectedGender(value);
@@ -246,10 +247,10 @@ function StdForm() {
               name='std_index_num'
               value={std_index_num}
               id='std_index_num'
-            
+
               onChange={handleOnChange}
             />
-            
+
           </Form.Group>
           <Form.Group className='column' as={Col} md="3" sm="6" >
             <Form.Label>*Student ID Number</Form.Label>
@@ -279,7 +280,7 @@ function StdForm() {
 
           <Form.Group className='column' as={Col} md="7" >
             <Form.Label>
-            *Student's name (write the first letters first, then last name write second)</Form.Label>
+              *Student's name (write the first letters first, then last name write second)</Form.Label>
             <Form.Control
               required
               type="text"
@@ -313,7 +314,7 @@ function StdForm() {
               value={std_dob}
               id='std_dob'
               onChange={handleOnChange}
-              max={maxDate} 
+              max={maxDate}
             />
           </Form.Group>
           <Form.Group className='column' as={Col} md="3" sm="6">
@@ -325,13 +326,32 @@ function StdForm() {
               value={std_joining_date}
               id='std_joining_date'
               onChange={handleOnChange}
-              max={maxDate} 
+              max={maxDate}
             />
           </Form.Group>
           <Form.Group className='column' as={Col} md="3" sm="6">
-            <Form.Label>
-            *Nationality</Form.Label>
-            <DropDown setData={setSelectedNationality} selectedData={selectedNationality} data={nationOption}
+            <div style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', display: 'flex' }}>
+              <Form.Label>
+                *Nationality
+              </Form.Label>
+              <a data-tooltip-id="my-tooltip-children-multiline">
+                <IoIosInformationCircleOutline size={18} color='#000' />
+              </a>
+              <Tooltip id="my-tooltip-children-multiline"
+                style={{ backgroundColor: 'rgba(0,0,0,.8)', color: "#fff", }}
+                place='top'>
+                <div style={{ display: 'flex', flexDirection: 'column', zIndex: 111 }}>
+                  <span>C/M  &nbsp; &nbsp;&nbsp;:- &nbsp;Sri Lankan Muslim</span>
+                  <span>C/T &nbsp; &nbsp;&nbsp;&nbsp;:- &nbsp;Sri Lankan Tamil</span>
+                  <span>C/C &nbsp; &nbsp;&nbsp;&nbsp;:- &nbsp;Sri Lankan Catholic</span>
+                  <span>C/CH &nbsp; :- &nbsp;Sri Lankan Christian</span>
+                  <span>C/S &nbsp; &nbsp;&nbsp;&nbsp;:- &nbsp;Sri Lankan Sinhala</span>
+                  <span>I/T &nbsp; &nbsp;&nbsp;&nbsp; :- &nbsp;Indian Tamil</span>
+                </div>
+              </Tooltip>
+            </div>
+            <DropDown style={{ zIndex: -11 }}
+              setData={setSelectedNationality} selectedData={selectedNationality} data={nationOption}
             />
           </Form.Group>
 
@@ -341,12 +361,12 @@ function StdForm() {
         <Row className="mb-3">
           <Form.Group className='column' as={Col} md="2" sm="6" >
             <Form.Label>
-            *Parents Religion</Form.Label>
+              *Parents Religion</Form.Label>
             <DropDown setData={setSelectedParentsReligion} selectedData={selectedParentsReligion} data={parentsReligionOption} />
           </Form.Group>
           <Form.Group className='column' as={Col} md="3" sm="6" >
             <Form.Label>
-            *Parents/ Guardian Name</Form.Label>
+              *Parents/ Guardian Name</Form.Label>
             <Form.Control
               required
               type="text"
@@ -360,7 +380,7 @@ function StdForm() {
           </Form.Group>
           <Form.Group className='column' as={Col} md="3" >
             <Form.Label>
-            *Parents/ Guardian Address</Form.Label>
+              *Parents/ Guardian Address</Form.Label>
             <Form.Control
               required
               type="text"
@@ -376,7 +396,7 @@ function StdForm() {
             <Form.Label>
               Previous School Name</Form.Label>
             <Form.Control
-              
+
               type="text"
               name="std_previous_school_name"
               value={std_previous_school_name}
@@ -388,9 +408,9 @@ function StdForm() {
           </Form.Group>
           <Form.Group className='column' as={Col} md="2" sm="6" >
             <Form.Label>
-            *Joining Grade</Form.Label>
+              *Joining Grade</Form.Label>
             <Form.Control
-              
+
               type="string"
               name="std_joining_grade"
               value={std_joining_grade}
@@ -416,7 +436,7 @@ function StdForm() {
             <Form.Label>
               1st Grade</Form.Label>
             <Form.Control
-            
+
               type="number"
               name='first_grade'
               value={first_grade}
@@ -429,7 +449,7 @@ function StdForm() {
             <Form.Label>
               2nd Grade</Form.Label>
             <Form.Control
-            
+
               type="number"
               name='second_grade'
               value={second_grade}
@@ -443,7 +463,7 @@ function StdForm() {
             <Form.Label>
               3rd Grade</Form.Label>
             <Form.Control
-            
+
               type="number"
               name='third_grade'
               value={third_grade}
@@ -457,7 +477,7 @@ function StdForm() {
             <Form.Label>
               4th Grade</Form.Label>
             <Form.Control
-            
+
               type="number"
               name='fourth_grade'
               value={fourth_grade}
@@ -471,7 +491,7 @@ function StdForm() {
             <Form.Label>
               5th Grade</Form.Label>
             <Form.Control
-            
+
               type="number"
               name='fifth_grade'
               value={fifth_grade}
@@ -485,7 +505,7 @@ function StdForm() {
             <Form.Label>
               6th Grade</Form.Label>
             <Form.Control
-            
+
               type="number"
               name='sixth_grade'
               value={sixth_grade}
@@ -499,7 +519,7 @@ function StdForm() {
             <Form.Label>
               7th Grade</Form.Label>
             <Form.Control
-            
+
               type="number"
               name='seventh_grade'
               value={seventh_grade}
@@ -513,7 +533,7 @@ function StdForm() {
             <Form.Label>
               8th Grade</Form.Label>
             <Form.Control
-            
+
               type="number"
               name='eighth_grade'
               value={eighth_grade}
@@ -527,7 +547,7 @@ function StdForm() {
             <Form.Label>
               9th Grade</Form.Label>
             <Form.Control
-            
+
               type="number"
               name='ninth_grade'
               value={ninth_grade}
@@ -541,7 +561,7 @@ function StdForm() {
             <Form.Label>
               10th Grade</Form.Label>
             <Form.Control
-            
+
               type="number"
               name='tenth_grade'
               value={tenth_grade}
@@ -555,7 +575,7 @@ function StdForm() {
             <Form.Label>
               11th Grade</Form.Label>
             <Form.Control
-            
+
               type="number"
               name='eleventh_grade'
               value={eleventh_grade}
@@ -585,7 +605,7 @@ function StdForm() {
               </div>
               <div className='col' md="6">
                 <Form.Control
-                
+
                   type="text"
                   name="twelfth_year"
                   value={twelfth_year}
@@ -613,7 +633,7 @@ function StdForm() {
               </div>
               <div className='col' md="6" sm="6">
                 <Form.Control
-                
+
                   type="text"
                   name="thirteen_year"
                   value={thirteen_year}
@@ -640,7 +660,7 @@ function StdForm() {
         <Row className="">
           <Form.Group as={Col} md="2" >
             <Form.Control
-              
+
               type="text"
               name="special_grade"
               value={special_grade}
@@ -657,14 +677,14 @@ function StdForm() {
             <Form.Label>
               Date of leaving school</Form.Label>
             <Form.Control
-              
+
               type="date"
               name="leaving_date"
               value={leaving_date}
               id='leaving_date'
               onChange={handleOnChange}
-              
-              max={maxDate} 
+
+              max={maxDate}
             />
 
           </Form.Group>
@@ -673,13 +693,13 @@ function StdForm() {
             <Form.Label>
               The date of the last return of the student who dropped out of school</Form.Label>
             <Form.Control
-              
+
               type="date"
               name="last_date"
               value={last_date}
               id='last_date'
               onChange={handleOnChange}
-              max={maxDate} 
+              max={maxDate}
             />
 
           </Form.Group>
@@ -703,7 +723,7 @@ function StdForm() {
             <Form.Label>
               Student Action Form No</Form.Label>
             <Form.Control
-              
+
               type="text"
               name="std_action_form_num"
               value={std_action_form_num}
@@ -717,14 +737,14 @@ function StdForm() {
             <Form.Label>
               Date of issue of Student Action Form </Form.Label>
             <Form.Control
-              
+
               type="date"
               name="std_sction_form_issue_date"
               value={std_sction_form_issue_date}
               id='std_sction_form_issue_date'
-              onChange={handleOnChange} 
+              onChange={handleOnChange}
               placeholder='Date of issue of Student Action Form'
-              max={maxDate} 
+              max={maxDate}
             />
 
           </Form.Group>
