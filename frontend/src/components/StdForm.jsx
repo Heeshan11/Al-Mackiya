@@ -338,9 +338,9 @@ function StdForm() {
                 <IoIosInformationCircleOutline size={18} color='#000' />
               </a>
               <Tooltip id="my-tooltip-children-multiline"
-                style={{ backgroundColor: 'rgba(0,0,0,.8)', color: "#fff", }}
+                style={{ backgroundColor: 'rgba(0,0,0,.8)', color: "#fff", zIndex: 111 }}
                 place='top'>
-                <div style={{ display: 'flex', flexDirection: 'column', zIndex: 111 }}>
+                <div style={{ display: 'flex', flexDirection: 'column', }}>
                   <span>C/M  &nbsp; &nbsp;&nbsp;:- &nbsp;Sri Lankan Muslim</span>
                   <span>C/T &nbsp; &nbsp;&nbsp;&nbsp;:- &nbsp;Sri Lankan Tamil</span>
                   <span>C/C &nbsp; &nbsp;&nbsp;&nbsp;:- &nbsp;Sri Lankan Catholic</span>
