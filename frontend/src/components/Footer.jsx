@@ -12,6 +12,9 @@ const Footer = () => {
           <p style={{fontSize:"11px",letterSpacing:'1px',fontWeight:'600',color:'#856e29'}}>
             Made with  by A.R. Jenna
           </p>
+          <p style={{fontSize:"9px",lineHeight:'12px',letterSpacing:'1px',color:'#856e29'}}>
+          (RNCoE 2020 - 2022 Batch)
+          </p>
           <ul className="socials">
             <li>
               <a target='blank' href="https://web.facebook.com/Mackiyanz/?_rdc=1&_rdr">
