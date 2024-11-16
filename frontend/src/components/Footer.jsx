@@ -9,7 +9,7 @@ const Footer = () => {
         <footer>
         <div className="footer-content">
           <h5>R/Al-Mackiya M.M.V</h5>
-          <p>
+          <p style={{fontSize:"11px",letterSpacing:'1px',fontWeight:'600',color:'#856e29'}}>
             Made with  by A.R. Jenna
           </p>
           <ul className="socials">

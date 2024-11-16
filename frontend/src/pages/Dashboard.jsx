@@ -17,7 +17,7 @@ const Dashboard = () => {
   useEffect(() => {
     if (!user) {
       navigate('/login');
-      return; // Ensure the effect stops here if user is not authenticated
+      // return; // Ensure the effect stops here if user is not authenticated
     }
   }, [user, navigate]);
   useEffect(() => {
@@ -30,26 +30,27 @@ const Dashboard = () => {
   }
 
   return (
-  <>
-  {user&&  <div >
-      <div style={{
-        visibility: isLoading ? 'hidden' : 'visible', justifyContent: 'right',
-        display: 'flex'
-      }}>
+    <>
+      {user &&
+        <div >
+          <div style={{
+            visibility: isLoading ? 'hidden' : 'visible', justifyContent: 'right',
+            display: 'flex'
+          }}>
 
-        <SearchBar />
-      </div>
-      <h6 style={{ textAlign: 'right', }} >Total Record{totalRecord > 1 ? 's' : ''}: {totalRecord}</h6>
-      <Display />
-      <div style={{
-        justifyContent: 'center',
-        display: 'flex', margin: '10px 0'
-      }}>
+            <SearchBar />
+          </div>
+          <h6 style={{ textAlign: 'right', }} >Total Record{totalRecord > 1 ? 's' : ''}: {totalRecord}</h6>
+          <Display />
+          <div style={{
+            justifyContent: 'center',
+            display: 'flex', margin: '10px 0'
+          }}>
 
-        <PaginationComponent />
-      </div>
-    </div>}
-  </>
+            <PaginationComponent />
+          </div>
+        </div>}
+    </>
   );
 };
 
