@@ -14,10 +14,12 @@ const Header = () => {
     useEffect(() => {
         naviagte('/')
     }, [user])
-
+    
     const handleLogout = () => {
         dispatch(reset())
         dispatch(logout())
+        naviagte('/login')
+        
 
     }
     return (
