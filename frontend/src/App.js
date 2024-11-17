@@ -19,7 +19,7 @@ import SearchBar from './components/SearchBar'
 import PrintableStudentDetails from './components/PrintedDetails'
 const App = () => {
   const { user, } = useSelector(state => state.auth);
-  const { isLoading, limit } = useSelector(state => state.student);
+  const { isLoading,limit } = useSelector(state => state.student);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -29,12 +29,8 @@ const App = () => {
       dispatch(getStudents(limit));
     }
     // Optionally reset any relevant state
-  }, [user, dispatch, limit]);
-  useEffect(() => {
-    if (!user) {
-      navigate('/login', { replace: true }); // Use 'replace' to prevent back navigation
-    }
-  }, [user, navigate]);
+  }, [user, dispatch,limit]);
+  
   return (
     <>
       <Router>
@@ -47,7 +43,7 @@ const App = () => {
               justifyContent: 'end',
               width: '97%'
             }}>
-
+            
             </div>
             <Routes>
               <Route path='/' element={<Dashboard />} />

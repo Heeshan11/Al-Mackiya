@@ -16,8 +16,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (!user) {
-      navigate('/login');
-      return; // Ensure the effect stops here if user is not authenticated
+      navigate('/login', { replace: true }); // Use 'replace' to prevent back navigation
     }
   }, [user, navigate]);
   useEffect(() => {
